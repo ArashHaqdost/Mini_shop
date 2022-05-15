@@ -1,5 +1,19 @@
+class Product{
+    title='DEFAULT';
+    imageUrl;
+    price;
+    description;
+
+    constructor (title,image,pric,decr){
+        this.title=title;
+        this.imageUrl=image;
+        this.price=pric;
+        this.description=decr;
+    }
+}
 const productList ={
     products:[
+        new Product('A pillow','./img/forest-balcony.webp',20,'A soft pillow'),
         {
             title:'A pillow',
             imageUrl:'./img/forest-balcony.webp',

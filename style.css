@@ -74,6 +74,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     width: 50rem;
     max-width: 90%;
+    text-align: center;
   }
   
   .product-item img {
@@ -82,9 +83,10 @@
     object-fit: cover;
   }
   
-  .product-item__content {
-    padding: 1rem;
+  .product-item div {
+    padding: 1rem !important;
     text-align: center;
+  
   }
   
   .product-item h2,

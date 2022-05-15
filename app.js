@@ -12,6 +12,19 @@ class Product {
     this.description = decr;
   }
 }
+//calss shopping cart
+class shoppingCart{
+    items=[];
+    render(){
+        const cartEl=document.createElement('section');
+        cartEl.innerHTML=`
+        <h2>Total:\$${0}<h2>
+        <button>Order Now!</button>
+        `;
+        cartEl.className='cart';
+        return cartEl;
+    }
+}
 //class producr Itrem
 class ProductItem {
   constructor(product) {
@@ -60,7 +73,6 @@ class ProductList {
     ),
   ];
   render() {
-    const renderHook = document.getElementById('app');
     const prodList = document.createElement('ul');
     prodList.className = 'product-list';
     for (const prod of this.products) {
@@ -68,9 +80,24 @@ class ProductList {
       const prodEl = productItem.render();
       prodList.append(prodEl);
     }
-    renderHook.append(prodList);
-  }
+    return prodList;
 }
+}
+//class shop
+class Shop{
+    render(){
+    const renderHook = document.getElementById('app');
 
-const productList = new ProductList();
-productList.render();
+        const cart= new shoppingCart();
+        const cartEl = cart.render();
+        const productList = new ProductList();
+        const prodListEl = productList.render();
+
+    renderHook.append(cartEl);
+    renderHook.append(prodListEl);
+
+        
+    }
+}
+const shop = new Shop();
+shop.render();

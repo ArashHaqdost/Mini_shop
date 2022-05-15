@@ -1,59 +1,71 @@
-class Product{
-    title='DEFAULT';
-    imageUrl;
-    price;
-    description;
+//class product
+class Product {
+  title = 'DEFAULT';
+  imageUrl;
+  price;
+  description;
 
-    constructor (title,image,pric,decr){
-        this.title=title;
-        this.imageUrl=image;
-        this.price=pric;
-        this.description=decr;
-    }
+  constructor(title, image, pric, decr) {
+    this.title = title;
+    this.imageUrl = image;
+    this.price = pric;
+    this.description = decr;
+  }
 }
-const productList ={
-    products:[
-        new Product('A pillow','./img/forest-balcony.webp',20,'A soft pillow'),
-        {
-            title:'A pillow',
-            imageUrl:'./img/forest-balcony.webp',
-            price:20,
-            description:'A soft Pillow'
-        },
-        {
-            title:'a Love story',
-            imageUrl:'./img/2.jpg',
-            price:'200',
-            description:'best thisnggs in this world',
-        },
-        {
-            title:'Famouse Persons',
-            imageUrl:'./img/1.jpg',
-            price:'1000',
-            description:'the best Software Engeneer in the world ,He is the  one of rich man in our world',
-        }
-    ],
-    render(){
-        const renderHook=document.getElementById('app');
-        const prodList =document.createElement('ul');
-        prodList.className='product-list';
-        for(const prod of this.products){
-            const prodEl=document.createElement('li');
-            prodEl.className='product-item';
-            prodEl.innerHTML=`
-            <div>
-            <img src="${prod.imageUrl}" alt="${prod.title}>
-            <div class="product-item_content">
-            <h2>${prod.title}</h2>
-            <h3>\$${prod.price}</h3>
-            <p>${prod.description}</p>
-            <button>add to card</button>
-            </div>
-            </div>
-            `;
-            prodList.append(prodEl);
-        }
-        renderHook.append(prodList);
+//class producr Itrem
+class ProductItem {
+  constructor(product) {
+    this.product = product;
+  }
+
+  render() {
+    const prodEl = document.createElement('li');
+    prodEl.className = 'product-item';
+    prodEl.innerHTML = `
+                <div>
+                <img src="${this.product.imageUrl}" alt="${this.product.title}>
+                <div class="">
+                <h2>${this.product.title}</h2>
+                <h3>\$${this.product.price}</h3>
+                <p>${this.product.description}</p>
+                <button>add to card</button>
+                </div>
+                </div>
+                `;
+    return prodEl;
+  }
+}
+//class product list
+class ProductList {
+  products = [
+    new Product('A pillow', './img/forest-balcony.webp', 20, 'A soft pillow'),
+
+    new Product(
+      'a Love story',
+      './img/2.jpg',
+      2000,
+      'best thisnggs in this world'
+    ),
+    new Product(
+      'a Love story',
+      './img/1.jpg',
+      2000,
+      'best thisnggs in this world'
+    ),
+  ];
+  constructor() {}
+  render() {
+    const renderHook = document.getElementById('app');
+    const prodList = document.createElement('ul');
+    prodList.className = 'product-list';
+    for (const prod of this.products) {
+      const ProductItem = new ProductItem(prod);
+      const prodEl = ProductItem.render();
+      prodList.append(prodEl);
     }
-};
+    renderHook.append(prodList);
+  }
+}
+
+const productList = new ProductList();
 productList.render();

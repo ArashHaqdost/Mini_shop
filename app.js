@@ -95,8 +95,8 @@ class ProductItem extends Component {
                 </div>
                 </div>
                 `;
-    const addButtonCard = prodEl.querySelector('button');
-    addButtonCard.addEventListener('click', this.addToCart.bind(this));
+    const addButtonCard =  prodEl.querySelector('button');
+     addButtonCard.addEventListener('click', this.addToCart.bind(this));
   }
 }
 //class product list

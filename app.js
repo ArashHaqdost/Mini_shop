@@ -15,6 +15,11 @@ class Product {
 //calss shopping cart
 class shoppingCart{
     items=[];
+  set cartItems(value){
+    this.items=value;
+    this.totalOutput.innerHTML=`<h2>Total:\$${this.totalAmount}<h2>`;
+
+  }
   get totalAmount(){
     const sum=this.items.reduce(
       (prevValu,curValue)=> prevValu+curValue.price,0
@@ -22,8 +27,9 @@ class shoppingCart{
     return sum;
   }
     addProduct(product){
-        this.items.push(product);
-        this.totalOutput.innerHTML=`<h2>Total:\$${1}<h2>`;
+      const updatItems=[...this.items];
+      updatItems.push(product);
+      this.cartItems=updatItems;
     }
     render(){
         const cartEl=document.createElement('section');

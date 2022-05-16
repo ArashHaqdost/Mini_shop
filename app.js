@@ -1,9 +1,9 @@
 //class product
 class Product {
-  title = 'DEFAULT';
-  imageUrl;
-  price;
-  description;
+//   title = 'DEFAULT';
+//   imageUrl;
+//   price;
+//   description;
 
   constructor(title, image, pric, decr) {
     this.title = title;
@@ -15,6 +15,16 @@ class Product {
 //calss shopping cart
 class shoppingCart{
     items=[];
+  get totalAmount(){
+    const sum=this.items.reduce(
+      (prevValu,curValue)=> prevValu+curValue.price,0
+    );
+    return sum;
+  }
+    addProduct(product){
+        this.items.push(product);
+        this.totalOutput.innerHTML=`<h2>Total:\$${1}<h2>`;
+    }
     render(){
         const cartEl=document.createElement('section');
         cartEl.innerHTML=`
@@ -22,6 +32,7 @@ class shoppingCart{
         <button>Order Now!</button>
         `;
         cartEl.className='cart';
+        this.totalOutput= cartEl.querySelector('h2');
         return cartEl;
     }
 }
@@ -31,8 +42,7 @@ class ProductItem {
     this.product = product;
   }
   addToCart(){
-      console.log('adding to produict to cart');
-      console.log(this.product);
+     App.addProuctToCart(this.product);
   }
 
   render() {
@@ -85,11 +95,11 @@ class ProductList {
 }
 //class shop
 class Shop{
+
     render(){
     const renderHook = document.getElementById('app');
-
-        const cart= new shoppingCart();
-        const cartEl = cart.render();
+        this.cart= new shoppingCart();
+        const cartEl = this.cart.render();
         const productList = new ProductList();
         const prodListEl = productList.render();
 
@@ -99,5 +109,17 @@ class Shop{
         
     }
 }
-const shop = new Shop();
-shop.render();
+
+class App{
+    static init(){
+        const shop = new Shop();
+        shop.render();
+        this.cart= shop.cart;
+    }
+    static addProuctToCart(product){
+        this.cart.addProduct(product);
+
+    }
+}
+
+App.init();

@@ -122,10 +122,10 @@ class ProductList extends Component {
     super(renderHookId);
   }
   render() {
-    this.creatRootElemnt('ul', 'product-list', [
+    this.creatRootElemnt('ul', 'product-list',[
       new ElementAttribute('id', 'prod-list'),
     ]);
-    for (const prod of this.products) {
+    for (const prod  of this.products) {
       const productItem = new ProductItem(prod, 'prod-list');
       productItem.render();
     }

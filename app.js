@@ -83,7 +83,7 @@ class ProductItem extends Component {
   }
 
   render() {
-    const prodEl = this.creatRootElemnt('li', 'product-item');
+    const prodEl =  this.creatRootElemnt('li', 'product-item');
     prodEl.innerHTML = `
                 <div>
                 <img src="${this.product.imageUrl}" alt="${this.product.title}>

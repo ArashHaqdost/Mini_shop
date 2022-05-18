@@ -21,10 +21,9 @@ class ElementAttribute {
 }
 //class Component
 class Component {
-  constructor(renderHook,shoudRender=true) {
+  constructor(renderHook, shoudRender=true) {
     this.hookId = renderHook;
     if (shoudRender){
-
       this.render();
     }
   }

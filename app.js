@@ -56,7 +56,7 @@ class shoppingCart extends Component {
       (prevValu, curValue) => prevValu + curValue.price,
       0
     );
-    return sum;
+     return sum;
   }
   constructor(renderHookId) {
     super(renderHookId);
@@ -64,7 +64,7 @@ class shoppingCart extends Component {
   addProduct(product) {
     const updatItems = [...this.items];
     updatItems.push(product);
-    this.cartItems = updatItems;
+     this.cartItems = updatItems;
   }
   orderProduct(product){
     const updatItems=[...this.items];
@@ -87,7 +87,7 @@ class ProductItem extends Component {
   constructor(product, renderHookId) {
     super(renderHookId,false);
     this.product = product;
-    this.render();
+    this.render(); 
   }
   addToCart() {
     App.addProuctToCart(this.product);
